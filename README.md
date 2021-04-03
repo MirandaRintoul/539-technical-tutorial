@@ -1,1 +1,3 @@
-# 539-technical-tutorial
+# Expectation-Maximization (EM) Algorithm for NLP
+Miranda Rintoul
+Ling 539
