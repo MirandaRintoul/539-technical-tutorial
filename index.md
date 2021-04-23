@@ -7,7 +7,7 @@ Ling 539
 
 In statistics and its applications, maximum likelihood estimation (MLE) is a popular technique for estimating the parameters of a distribution from observed data. The likelihood function on a parameter $\theta$
 
-``` math
+```math
 SE = \frac{\sigma}{\sqrt{n}}
 ```
 
