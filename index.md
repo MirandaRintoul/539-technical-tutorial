@@ -1,3 +1,9 @@
+---
+layout: post
+title: Blogging Like a Hacker
+usemathjax: true
+---
+
 # Expectation-Maximization (EM) Algorithm for NLP
 Miranda Rintoul
 
