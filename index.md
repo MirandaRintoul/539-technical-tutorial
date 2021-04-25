@@ -12,3 +12,5 @@ In statistics and its applications, maximum likelihood estimation (MLE) is a pop
 <img src="https://render.githubusercontent.com/render/math?math=L(\theta|y) = f(y|\theta)">
 
 The maximum likelihood estimator of <img src="https://render.githubusercontent.com/render/math?math=\theta"> is the argmax of the likelihood function.  Intuitively, it can be thought of as the parameter that is most likely to have generated the data.  In practice, it is conveneient to instead maximize the log of the likelihood function, <img src="https://render.githubusercontent.com/render/math?math=\ell(\theta|y)">.
+
+$x$
