@@ -15,4 +15,4 @@ The maximum likelihood estimator of <img src="https://render.githubusercontent.c
 
 $x$
 
-$$x$$
+\[x\]
