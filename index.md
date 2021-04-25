@@ -9,7 +9,7 @@ Ling 539
 
 ## Background
 
-In statistics and its applications, maximum likelihood estimation (MLE) is a popular technique for estimating the parameters of a distribution from observed data. The likelihood function on a parameter \(\theta\)
+In statistics and its applications, maximum likelihood estimation (MLE) is a popular technique for estimating the parameters of a distribution from observed data. The likelihood function on a parameter <img src="https://render.githubusercontent.com/render/math?math=\theta">
 
 ```math
 SE = \frac{\sigma}{\sqrt{n}}
