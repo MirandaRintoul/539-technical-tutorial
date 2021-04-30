@@ -10,15 +10,281 @@
 <link rel="stylesheet" type="text/css" href="index.css"> 
 </head><body 
 >
-<!--l. 21--><p class="noindent" >jl;ka;lkja;a
-<!--l. 23--><p class="indent" >
-   <center class="math-display" >
+<div class="center" 
+>
+<!--l. 29--><p class="noindent" >
+<h3 class="likesectionHead"><a 
+ id="x1-1000"></a>Expectation-Maximization Algorithm</h3>
+<!--l. 32--><p class="noindent" >
+<h4 class="likesubsectionHead"><a 
+ id="x1-2000"></a>Background</h4>
+</div>
+<!--l. 35--><p class="noindent" >In statistics and its applications, maximum likelihood estimation (MLE) is a popular technique for estimating the
+parameters of a distribution from observed data. The likelihood function on a parameter <span 
+class="cmmi-10">&#x03B8; </span>given data <span 
+class="cmmi-10">y </span>is equivalent
+to the probability density function of <span 
+class="cmmi-10">y </span>with parameter <span 
+class="cmmi-10">&#x03B8;</span>.
+<!--l. 37--><p class="noindent" >
+<center class="math-display" >
 <img 
-src="index0x.png" alt="y = x
+src="index0x.png" alt="L(&#x03B8;|y) = f(y|&#x03B8;)
 " class="math-display" ></center>
-    
+<!--l. 39--><p class="noindent" >The maximum likelihood estimator of <span 
+class="cmmi-10">&#x03B8; </span>is the argmax of the likelihood function. Intuitively, it can be thought of as
+the parameter that is most likely to have generated the data. In practice, it is conveneient to instead maximize the
+log of the likelihood function, <span 
+class="cmmi-10">&#x2113;</span>(<span 
+class="cmmi-10">&#x03B8;</span><span 
+class="cmsy-10">|</span><span 
+class="cmmi-10">y</span>).
+<!--l. 41--><p class="noindent" >However, there are many situations where the not all information is available, and our data has a
+hidden (or latent) component. In this situation, finding the MLE of the parameters using only the
+observed data can be difficult or even intractable. The Expectation-Maximizztion (E-M) algorithm,
+introduced in 1977, is an iterative method for obtaining the MLE when there is latent or missing
+data.
+<div class="center" 
+>
+<!--l. 43--><p class="noindent" >
+<!--l. 44--><p class="noindent" >
+<h4 class="likesubsectionHead"><a 
+ id="x1-3000"></a>Algorithm</h4>
+</div>
+<!--l. 47--><p class="noindent" >The E-M works by alternating between estimating the latent data and the parameters at each step. The data is
+used to estimate the parameters, then the parameters are used to estimate the data, and so on until
+convergence.
+<!--l. 49--><p class="noindent" >Let <span 
+class="cmmi-10">X </span>be our observed data, <span 
+class="cmmi-10">Z </span>be our latent data, and <span 
+class="cmmi-10">&#x03B8; </span>our parameter of interest. The E-M algorithm is as
+follows:
+                                                                                         
+                                                                                         
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-3002x1">Initialize <span 
+class="cmmi-10">&#x03B8; </span>to some starting value(s).
+     </li>
+     <li 
+  class="enumerate" id="x1-3004x2"><span 
+class="cmbx-10">E-Step: </span>At time <span 
+class="cmmi-10">t</span>, estimate the values of the latent data <span 
+class="cmmi-10">Z </span>based on the current value of <span 
+class="cmmi-10">&#x03B8;</span>. This gives
+     an expression to update <span 
+class="cmmi-10">&#x03B8; </span>based on the expected value of the log-likelihood with respect to the new
+     conditional distribution of <span 
+class="cmmi-10">Z </span>given <span 
+class="cmmi-10">X</span>.
+     <center class="math-display" >
+     <img 
+src="index1x.png" alt="     (t)
+Q (&#x03B8;|&#x03B8;  ) = EZ |X,&#x03B8;(t)[&#x2113;(&#x03B8;|X,Z )]
+     " class="math-display" ></center>
+     </li>
+     <li 
+  class="enumerate" id="x1-3006x3"><span 
+class="cmbx-10">M-Step: </span>Find the most likely parameter(s) given the data from step 2. This is equivalent to maximizing
+     the quantity we defined before:
+     <center class="math-display" >
+     <img 
+src="index2x.png" alt=" (t+1)             (t)
+&#x03B8;    = argm&#x03B8;ax Q(&#x03B8;|&#x03B8;  )
+     " class="math-display" ></center>
+     </li>
+     <li 
+  class="enumerate" id="x1-3008x4">Repeat steps 2 and 3 until convergence.</li></ol>
+<div class="center" 
+>
+<!--l. 59--><p class="noindent" >
+<!--l. 60--><p class="noindent" >
+<h4 class="likesubsectionHead"><a 
+ id="x1-4000"></a>E-M and Hidden Markov Models</h4>
+</div>
+<!--l. 63--><p class="noindent" >One of the most important applications of the E-M algorithm in NLP is the task of training a Hidden Markov
+Model (HMM). An HMM is based on a structure called a Markov chain, which is a sequence of probabilistic events,
+or states. A Markov chain obeys the Markov assumption, which states that the probability of a state
+depends only on the previous state. Equivalently, only the current state can be used to predict the next
+state.
+                                                                                         
+                                                                                         
+<!--l. 65--><p class="noindent" >An HMM is an extension of a Markov chain that assumes that all states in the chain are hidden. However, the states
+emit observations with a certain probability. We cannot see any of the states, but we can see the observations. This
+model lends itself particularly well to the NLP task of part-of-speech (POS) tagging. In this construction, words
+would be observations, and POS tags would be states. Each POS tag would depend only on the previous
+tag.
+<!--l. 67--><p class="noindent" ><hr class="figure"><div class="figure" 
+>
+                                                                                         
+                                                                                         
+<a 
+ id="x1-40011"></a>
+                                                                                         
+                                                                                         
+<div class="center" 
+>
+<!--l. 69--><p class="noindent" >
+<!--l. 97--><p class="noindent" ><object data="index-1.svg" width="535.31572 " height="153.81401 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>
+<br />
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;1: </span><span  
+class="content">An HMM structure on an example sentence. States (POS tags) are on top, and observations
+(words) are below.</span></div><!--tex4ht:label?: x1-40011 -->
+</div>
+                                                                                         
+                                                                                         
+<!--l. 100--><p class="noindent" ></div><hr class="endfigure">
+<!--l. 102--><p class="noindent" >Formally, an HMM is defined as a set of five components:
+     <ul class="itemize1">
+     <li class="itemize">a set <tspan font-family="cmmi" font-size="10">Q </tspan>of <tspan font-family="cmmi" font-size="10">N </tspan>hidden states
+     <center class="math-display" >
+     <img 
+src="index3x.png" alt="Q = q1,...,qN
+     " class="math-display" ></center>
+     </li>
+     <li class="itemize">an <tspan font-family="cmmi" font-size="10">N </tspan><tspan font-family="cmsy" font-size="10">&#x00D7; </tspan><tspan font-family="cmmi" font-size="10">N </tspan>transition probability matrix where <tspan font-family="cmmi" font-size="10">a</tspan><sub><tspan font-family="cmmi" font-size="7">ij</tspan></sub> is the probability of transitioning from state <tspan font-family="cmmi" font-size="10">i </tspan>to <tspan font-family="cmmi" font-size="10">j</tspan>
+     and <tspan font-family="cmex" font-size="10">&#x2211;</tspan>
+  <sub><tspan font-family="cmmi" font-size="7">j</tspan></sub><span style="margin-left:2.77695pt" class="tmspace"></span><tspan font-family="cmmi" font-size="10">a</tspan><sub><tspan font-family="cmmi" font-size="7">ij</tspan></sub> = 1   <tspan font-family="cmsy" font-size="10">&#x2200;</tspan><tspan font-family="cmmi" font-size="10">i</tspan>
+     <center class="math-display" >
+     <img 
+src="index4x.png" alt="A = a11...aij...aNN
+     " class="math-display" ></center>
+     </li>
+     <li class="itemize">a sequence <tspan font-family="cmmi" font-size="10">V </tspan>of <tspan font-family="cmmi" font-size="10">M </tspan>possible observations
+     <center class="math-display" >
+     <img 
+src="index5x.png" alt="V = {v ,...,v  }
+      1     M
+     " class="math-display" ></center>
+     </li>
+     <li class="itemize">an <tspan font-family="cmmi" font-size="10">N </tspan><tspan font-family="cmsy" font-size="10">&#x00D7; </tspan><tspan font-family="cmmi" font-size="10">M  </tspan>matrix <tspan font-family="cmmi" font-size="10">B </tspan>of observation likelihoods where <tspan font-family="cmmi" font-size="10">b</tspan><sub><tspan font-family="cmmi" font-size="7">ij</tspan></sub>  is the probability of state <tspan font-family="cmmi" font-size="10">i </tspan>generating
+     observation <tspan font-family="cmmi" font-size="10">j </tspan>and <tspan font-family="cmex" font-size="10">&#x2211;</tspan>
+  <sub><tspan font-family="cmmi" font-size="7">j</tspan></sub><span style="margin-left:2.77695pt" class="tmspace"></span><tspan font-family="cmmi" font-size="10">b</tspan><sub><tspan font-family="cmmi" font-size="7">ij</tspan></sub> = 1   <tspan font-family="cmsy" font-size="10">&#x2200;</tspan><tspan font-family="cmmi" font-size="10">i</tspan>
+                                                                                         
+                                                                                         
+     <center class="math-display" >
+     <img 
+src="index6x.png" alt="B = b11...bij...bNM
+     " class="math-display" ></center>
+     </li>
+     <li class="itemize">an initial probability distribution <tspan font-family="cmmi" font-size="10">&#x03C0; </tspan>over states, where <tspan font-family="cmmi" font-size="10">&#x03C0;</tspan><sub><tspan font-family="cmmi" font-size="7">i</tspan></sub> is the probability that the chain starts with
+     state <tspan font-family="cmmi" font-size="10">i</tspan>, and <tspan font-family="cmex" font-size="10">&#x2211;</tspan>
+  <sub><tspan font-family="cmmi" font-size="7">i</tspan></sub><span style="margin-left:2.77695pt" class="tmspace"></span><tspan font-family="cmmi" font-size="10">&#x03C0;</tspan><sub><tspan font-family="cmmi" font-size="7">i</tspan></sub> = 1
+     <center class="math-display" >
+     <img 
+src="index7x.png" alt="&#x03C0; = &#x03C0; ,...,&#x03C0;
+     1     N
+     " class="math-display" ></center></li></ul>
+<!--l. 116--><p class="noindent" >Given a set of possible states <tspan font-family="cmmi" font-size="10">Q</tspan>, a vocabulary <tspan font-family="cmmi" font-size="10">V </tspan>, and an unlabeled observation <tspan font-family="cmmi" font-size="10">O</tspan>, training an HMM requires
+training both the transition probability matrix <tspan font-family="cmmi" font-size="10">A </tspan>and the obeservation matrix <tspan font-family="cmmi" font-size="10">B</tspan>. This is a daunting
+task, but the E-M algorithm allows us to iteratively improve our estimates of these probabilities. The
+<tspan font-family="cmbx" font-size="10">forward-backward</tspan>, or <tspan font-family="cmbx" font-size="10">Baum-Welch </tspan>algorithm is a specific instance of the E-M algorithm designed for this
+purpose.
+<div class="center" 
+>
+<!--l. 118--><p class="noindent" >
+<h4 class="likesubsectionHead"><a 
+ id="x1-5000"></a>The Forward-Backward Algorithm</h4>
+</div>
+<!--l. 122--><p class="noindent" >The E-step of the forward-backward algorithm makes use of forward probabilities and backward probabilities, which
+are caculated from <tspan font-family="cmmi" font-size="10">A</tspan>, <tspan font-family="cmmi" font-size="10">B</tspan>, and a sequence of observations <tspan font-family="cmmi" font-size="10">O </tspan>of length <tspan font-family="cmmi" font-size="10">T </tspan>for a state <tspan font-family="cmmi" font-size="10">i </tspan>and a time <tspan font-family="cmmi" font-size="10">t</tspan>. Both are computed
+recursively.
+<!--l. 124--><p class="noindent" >The forward probability <tspan font-family="cmmi" font-size="10">&#x03B1;</tspan><sub><tspan font-family="cmmi" font-size="7">i</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) is the probability of seeing observations <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmr" font-size="7">1</tspan></sub><tspan font-family="cmmi" font-size="10">,o</tspan><sub><tspan font-family="cmr" font-size="7">2</tspan></sub><tspan font-family="cmmi" font-size="10">,</tspan><tspan font-family="cmmi" font-size="10">&#x2026;</tspan><tspan font-family="cmmi" font-size="10">,o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> and being in state <tspan font-family="cmmi" font-size="10">i </tspan>at time
+<tspan font-family="cmmi" font-size="10">t</tspan>:
+<center class="math-display" >
+<img 
+src="index8x.png" alt="&#x03B1;i(1) = &#x03C0;ibi(o1)
+" class="math-display" ></center>
+                                                                                         
+                                                                                         
+<center class="math-display" >
+<img 
+src="index9x.png" alt="            N&#x2211;
+&#x03B1;i(t) = bi(ot)  &#x03B1;j(t- 1)aji
+            j=1
+" class="math-display" ></center>
+<!--l. 128--><p class="noindent" >So, the forward probability of <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> for state <tspan font-family="cmmi" font-size="10">i </tspan>is the observation probability of <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> for state <tspan font-family="cmmi" font-size="10">i </tspan>times the sum of the
+forward probabilities of the previous observation times the transition probability from <tspan font-family="cmmi" font-size="10">j </tspan>to <tspan font-family="cmmi" font-size="10">i </tspan>for all <tspan font-family="cmmi" font-size="10">j</tspan>
+states.
+<!--l. 130--><p class="noindent" >The backward probability <tspan font-family="cmmi" font-size="10">&#x03B2;</tspan><sub><tspan font-family="cmmi" font-size="7">i</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) is the probability of seeing the ending observations <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan><tspan font-family="cmr" font-size="7">+1</tspan></sub><tspan font-family="cmmi" font-size="10">,</tspan><tspan font-family="cmmi" font-size="10">&#x2026;</tspan><tspan font-family="cmmi" font-size="10">,o</tspan><sub><tspan font-family="cmmi" font-size="7">T</tspan></sub> given starting state <tspan font-family="cmmi" font-size="10">i</tspan>
+at time <tspan font-family="cmmi" font-size="10">T</tspan>:
+<center class="math-display" >
+<img 
+src="index10x.png" alt="&#x03B2;i(T) = 1
+" class="math-display" ></center>
+<center class="math-display" >
+<img 
+src="index11x.png" alt="      &#x2211;N
+&#x03B2;i(t) =   &#x03B2;j(t+ 1)aijbj(yt+1)
+      j=1
+" class="math-display" ></center>
+<!--l. 134--><p class="noindent" >So, the backward probability of <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> is the sum of the backward probability of the next state times the transiiton
+probability from <tspan font-family="cmmi" font-size="10">j </tspan>to <tspan font-family="cmmi" font-size="10">i </tspan>times the observation probability of the next state for all <tspan font-family="cmmi" font-size="10">j </tspan>states.
+<!--l. 136--><p class="noindent" >The forward and backward probabilities, as well as the current estimates for <tspan font-family="cmmi" font-size="10">A </tspan>and <tspan font-family="cmmi" font-size="10">B</tspan>, allow us to calculate the final
+two quantities needed for the E-step, <tspan font-family="cmmi" font-size="10">&#x03B3;</tspan><sub><tspan font-family="cmmi" font-size="7">i</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) and <tspan font-family="cmmi" font-size="10">&#x03BE;</tspan><sub><tspan font-family="cmmi" font-size="7">ij</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>).
+<!--l. 138--><p class="noindent" >The quantity <tspan font-family="cmmi" font-size="10">&#x03B3;</tspan><sub><tspan font-family="cmmi" font-size="7">i</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) is the probability of being in state <tspan font-family="cmmi" font-size="10">i </tspan>at time <tspan font-family="cmmi" font-size="10">t </tspan>given <tspan font-family="cmmi" font-size="10">O</tspan>, <tspan font-family="cmmi" font-size="10">A</tspan>, and <tspan font-family="cmmi" font-size="10">B</tspan>:
+<!--l. 140--><p class="noindent" >
+<center class="math-display" >
+<img 
+src="index12x.png" alt="&#x03B3;i(t) = &#x2211;N-&#x03B1;i(t)&#x03B2;i(t)--
+         j=1&#x03B1;j(t)&#x03B2;j(t)
+" class="math-display" ></center>
+<!--l. 142--><p class="noindent" >The quantity <tspan font-family="cmmi" font-size="10">&#x03BE;</tspan><sub><tspan font-family="cmmi" font-size="7">ij</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) is the probability of being in state <tspan font-family="cmmi" font-size="10">i </tspan>at time <tspan font-family="cmmi" font-size="10">t </tspan>and being in state <tspan font-family="cmmi" font-size="10">j </tspan>at time <tspan font-family="cmmi" font-size="10">t </tspan>+ 1 given <tspan font-family="cmmi" font-size="10">O</tspan>, <tspan font-family="cmmi" font-size="10">A</tspan>, and
+<tspan font-family="cmmi" font-size="10">B</tspan>:
+<!--l. 144--><p class="noindent" >
+<center class="math-display" >
+<img 
+src="index13x.png" alt="       &#x03B1; (t)a &#x03B2; (t+ 1)b (o  )
+&#x03BE;ij(t) = -i-&#x2211;Nij-j------j--t+1--
+            j=1&#x03B1;j(t)&#x03B2;j(t)
+" class="math-display" ></center>
+<!--l. 146--><p class="noindent" >The denominators in both <tspan font-family="cmmi" font-size="10">&#x03B3;</tspan><sub><tspan font-family="cmmi" font-size="7">i</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) and <tspan font-family="cmmi" font-size="10">&#x03BE;</tspan><sub><tspan font-family="cmmi" font-size="7">ij</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) represent the probability of seeing the entire observation sequence
+<tspan font-family="cmmi" font-size="10">O</tspan>.
+<!--l. 148--><p class="noindent" >We can now use these two quantities to update <tspan font-family="cmmi" font-size="10">A </tspan>and <tspan font-family="cmmi" font-size="10">B </tspan>(and <tspan font-family="cmmi" font-size="10">&#x03C0;</tspan>) in the M-step.
+<!--l. 150--><p class="noindent" >
+<center class="math-display" >
+<img 
+src="index14x.png" alt=" *
+&#x03C0;i = &#x03B3;i(1)
+" class="math-display" ></center>
+<!--l. 152--><p class="noindent" >
+<center class="math-display" >
+<img 
+src="index15x.png" alt="     &#x2211;T -1 &#x03BE; (t)
+a*ij = &#x2211;Tt=-11ij--
+       t=1 &#x03B3;i(t)
+" class="math-display" ></center>
+<!--l. 154--><p class="noindent" >
+                                                                                         
+                                                                                         
+<center class="math-display" >
+<img 
+src="index16x.png" alt="*    &#x2211;Ti=1&#x03B3;i(t)&#x22C5;I(ot = vk)
+bij = -----&#x2211;T------------
+            t=1&#x03B3;i(t)
+" class="math-display" ></center>
+<!--l. 156--><p class="noindent" >where <tspan font-family="cmmi" font-size="10">I</tspan>(<tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> = <tspan font-family="cmmi" font-size="10">v</tspan><sub><tspan font-family="cmmi" font-size="7">k</tspan></sub>) is an indicator function that is 1 when <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> = <tspan font-family="cmmi" font-size="10">v</tspan><sub><tspan font-family="cmmi" font-size="7">k</tspan></sub>, and 0 otherwise. To summarize, the full algorithm
+is:
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-5002x1">Initialize <tspan font-family="cmmi" font-size="10">&#x03C0;,A, </tspan>and <tspan font-family="cmmi" font-size="10">B</tspan>, either randomly or using prior information
+     </li>
+     <li 
+  class="enumerate" id="x1-5004x2"><tspan font-family="cmbx" font-size="10">E-Step: </tspan>Calculate forward and backward probabilities for all states using the entire training sequence.
+     Use these, as well as <tspan font-family="cmmi" font-size="10">&#x03C0;,A, </tspan>and <tspan font-family="cmmi" font-size="10">B</tspan>, to update <tspan font-family="cmmi" font-size="10">&#x03B3; </tspan>and <tspan font-family="cmmi" font-size="10">&#x03BE;</tspan>.
+     </li>
+     <li 
+  class="enumerate" id="x1-5006x3"><tspan font-family="cmbx" font-size="10">M-Step: </tspan>Update <tspan font-family="cmmi" font-size="10">&#x03C0;,A, </tspan>and <tspan font-family="cmmi" font-size="10">B </tspan>using <tspan font-family="cmmi" font-size="10">&#x03B3; </tspan>and <tspan font-family="cmmi" font-size="10">&#x03BE;</tspan>.
+     </li>
+     <li 
+  class="enumerate" id="x1-5008x4">Repeat steps 2 and 3 until convergence, e.g. the norms of the previous <tspan font-family="cmmi" font-size="10">A </tspan>and <tspan font-family="cmmi" font-size="10">B </tspan>are within <tspan font-family="cmmi" font-size="10">&#x03F5; </tspan>of the
+     norms of the current <tspan font-family="cmmi" font-size="10">A </tspan>and <tspan font-family="cmmi" font-size="10">B</tspan>.</li></ol>
+ 
 </body></html> 
 
+                                                                                         
+                                                                                         
                                                                                          
 
 

@@ -1,8 +1,11 @@
+htfcss: cmbx  font-weight: bold;
+htfcss: cmbxsl  font-weight: bold; font-style: oblique;
 htfcss: cmmi font-style: italic;
 htfcss: cmmib font-style: italic; font-weight: bold;
 File: index.html
 File: index.css
 File: index.tmp
+File: index-1.svg
 Css: p.noindent { text-indent: 0em }
 Css: td p.noindent { text-indent: 0em; margin-top:0em; }
 Css: p.nopar { text-indent: 0em; }
@@ -131,7 +134,51 @@ Css: table.gather {width:100%;}
 Css: div.gather-star {text-align:center;}
 Css: .figure img.graphics {margin-left:10%;}
 Css: div.verbatiminput {font-family: monospace; white-space: nowrap; }
+Css: div.tabular, div.center div.tabular {text-align: center; margin-top:0.5em; margin-bottom:0.5em; }
+Css: table.tabular td p{margin-top:0em;}
+Css: table.tabular {margin-left: auto; margin-right: auto;}
+Css: td p:first-child{ margin-top:0em; }
+Css: td p:last-child{ margin-bottom:0em; }
+Css: div.td00{ margin-left:0pt; margin-right:0pt; }
+Css: div.td01{ margin-left:0pt; margin-right:5pt; }
+Css: div.td10{ margin-left:5pt; margin-right:0pt; }
+Css: div.td11{ margin-left:5pt; margin-right:5pt; }
+Css: table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
+Css: td.td00{ padding-left:0pt; padding-right:0pt; }
+Css: td.td01{ padding-left:0pt; padding-right:5pt; }
+Css: td.td10{ padding-left:5pt; padding-right:0pt; }
+Css: td.td11{ padding-left:5pt; padding-right:5pt; }
+Css: table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
+Css: .hline hr, .cline hr{ height : 1px; margin:0px; }
+Css: div.array {text-align:center;}
+Css: body{margin: 75px 300px 100px; font-size: 18px; background-color: WhiteSmoke;}
 --- needs --- index.idv[2] ==> index0x.png ---
+--- needs --- index.idv[4] ==> index1x.png ---
+--- needs --- index.idv[5] ==> index2x.png ---
+Css:  .foreignobject {line-height:100%; font-size:120%; font-family:STIXgeneral,Times,Symbol,cmr10,CMSY10,CMEX10;padding:0; margin:0; text-align:center; } 
+Css: math {vertical-align:baseline; line-height:100%; font-size:100%; font-family:STIXGeneral,Times,Symbol, cmr10,cmsy10,cmex10,cmmi10; font-style: normal; margin:0; padding:0; }
+--- needs --- index.idv[7] ==> index3x.png ---
+--- needs --- index.idv[8] ==> index4x.png ---
+--- needs --- index.idv[9] ==> index5x.png ---
+--- needs --- index.idv[11] ==> index6x.png ---
+--- needs --- index.idv[12] ==> index7x.png ---
+--- needs --- index.idv[13] ==> index8x.png ---
+--- needs --- index.idv[15] ==> index9x.png ---
+--- needs --- index.idv[16] ==> index10x.png ---
+--- needs --- index.idv[17] ==> index11x.png ---
+--- needs --- index.idv[19] ==> index12x.png ---
+--- needs --- index.idv[20] ==> index13x.png ---
+--- needs --- index.idv[21] ==> index14x.png ---
+--- needs --- index.idv[22] ==> index15x.png ---
+--- needs --- index.idv[24] ==> index16x.png ---
 --- characters ---
+Font("cmex","10","10","100")
+Font("cmr","5","5","100")
+Font("cmr","7","7","100")
 Font("cmr","10","10","100")
+Font("cmmi","5","5","100")
+Font("cmmi","7","7","100")
 Font("cmmi","10","10","100")
+Font("cmsy","7","7","100")
+Font("cmsy","10","10","100")
+Font("cmbx","10","10","100")
