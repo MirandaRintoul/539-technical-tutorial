@@ -9,6 +9,15 @@
 \usepackage[margin = 1in]{geometry}
 \setlength{\parindent}{0pt}
 \DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
 
 \usepackage{array}
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
@@ -74,7 +83,9 @@
 		  background-color:rgba(0, 0, 0, 0);}} 
 
 \begin{center}
-\section*{Expectation-Maximization Algorithm}
+\section*{Expectation-Maximization Algorithm for NLP}
+
+Miranda Rintoul
 
 \subsection*{Background}
 \end{center}
@@ -385,6 +396,20 @@ def forward_backward(A, B, pi, obs_seqs, tokens):
     return (pi, A, B)
 \end{lstlisting}
 
+The full code can be found \href{https://github.com/MirandaRintoul/539-technical-tutorial/blob/main/em_nlp.py}{here}.  In this example, I train an HMM on the Penn Treebank data from the \texttt{nltk} package, which can be found found \href{https://www.nltk.org/nltk_data/}{here} (item 44).
 
+Once an HMM is trained, it can be used to label, or decode, new testing sequences using methods like greedy decoding or the Viterbi algorithm.
+
+\begin{center}
+\subsection*{Sources}
+\end{center}
+
+\begin{itemize}
+\item \url{https://www.ece.iastate.edu/~namrata/EE527_Spring08/Dempster77.pdf}
+\item \url{https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm}
+\item \url{https://web.stanford.edu/~jurafsky/slp3/A.pdf}
+\item \url{https://en.wikipedia.org/wiki/Hidden_Markov_model}
+\item \url{https://en.wikipedia.org/wiki/Baum%E2%80%93Welch_algorithm}
+\end{itemize}
 
 \end{document}

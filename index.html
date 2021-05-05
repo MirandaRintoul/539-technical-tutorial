@@ -12,26 +12,27 @@
 >
 <div class="center" 
 >
-<!--l. 76--><p class="noindent" >
+<!--l. 85--><p class="noindent" >
 <h3 class="likesectionHead"><a 
- id="x1-1000"></a>Expectation-Maximization Algorithm</h3>
-<!--l. 79--><p class="noindent" >
+ id="x1-1000"></a>Expectation-Maximization Algorithm for NLP</h3>
+<!--l. 88--><p class="noindent" >Miranda Rintoul
+<!--l. 90--><p class="noindent" >
 <h4 class="likesubsectionHead"><a 
  id="x1-2000"></a>Background</h4>
 </div>
-<!--l. 82--><p class="noindent" >In statistics and its applications, maximum likelihood estimation (MLE) is a popular technique for estimating the
+<!--l. 93--><p class="noindent" >In statistics and its applications, maximum likelihood estimation (MLE) is a popular technique for estimating the
 parameters of a distribution from observed data. The likelihood function on a parameter <span 
 class="cmmi-10">&#x03B8; </span>given data <span 
 class="cmmi-10">y </span>is equivalent
 to the probability density function of <span 
 class="cmmi-10">y </span>with parameter <span 
 class="cmmi-10">&#x03B8;</span>.
-<!--l. 84--><p class="noindent" >
+<!--l. 95--><p class="noindent" >
 <center class="math-display" >
 <img 
 src="index0x.png" alt="L(&#x03B8;|y) = f(y|&#x03B8;)
 " class="math-display" ></center>
-<!--l. 86--><p class="noindent" >The maximum likelihood estimator of <span 
+<!--l. 97--><p class="noindent" >The maximum likelihood estimator of <span 
 class="cmmi-10">&#x03B8; </span>is the argmax of the likelihood function. Intuitively, it can be thought of as
 the parameter that is most likely to have generated the data. In practice, it is conveneient to instead maximize the
 log of the likelihood function, <span 
@@ -39,22 +40,22 @@ class="cmmi-10">&#x2113;</span>(<span
 class="cmmi-10">&#x03B8;</span><span 
 class="cmsy-10">|</span><span 
 class="cmmi-10">y</span>).
-<!--l. 88--><p class="noindent" >However, there are many situations where the not all information is available, and our data has a
+<!--l. 99--><p class="noindent" >However, there are many situations where the not all information is available, and our data has a
 hidden (or latent) component. In this situation, finding the MLE of the parameters using only the
 observed data can be difficult or even intractable. The Expectation-Maximizztion (E-M) algorithm,
 introduced in 1977, is an iterative method for obtaining the MLE when there is latent or missing
 data.
 <div class="center" 
 >
-<!--l. 90--><p class="noindent" >
-<!--l. 91--><p class="noindent" >
+<!--l. 101--><p class="noindent" >
+<!--l. 102--><p class="noindent" >
 <h4 class="likesubsectionHead"><a 
  id="x1-3000"></a>Algorithm</h4>
 </div>
-<!--l. 94--><p class="noindent" >The E-M works by alternating between estimating the latent data and the parameters at each step. The data is
+<!--l. 105--><p class="noindent" >The E-M works by alternating between estimating the latent data and the parameters at each step. The data is
 used to estimate the parameters, then the parameters are used to estimate the data, and so on until
 convergence.
-<!--l. 96--><p class="noindent" >Let <span 
+<!--l. 107--><p class="noindent" >Let <span 
 class="cmmi-10">X </span>be our observed data, <span 
 class="cmmi-10">Z </span>be our latent data, and <span 
 class="cmmi-10">&#x03B8; </span>our parameter of interest. The E-M algorithm is as
@@ -97,24 +98,24 @@ src="index2x.png" alt=" (t+1)             (t)
   class="enumerate" id="x1-3008x4">Repeat steps 2 and 3 until convergence.</li></ol>
 <div class="center" 
 >
-<!--l. 106--><p class="noindent" >
-<!--l. 107--><p class="noindent" >
+<!--l. 117--><p class="noindent" >
+<!--l. 118--><p class="noindent" >
 <h4 class="likesubsectionHead"><a 
  id="x1-4000"></a>E-M and Hidden Markov Models</h4>
 </div>
-<!--l. 110--><p class="noindent" >One of the most important applications of the E-M algorithm in NLP is the task of training a Hidden Markov
+<!--l. 121--><p class="noindent" >One of the most important applications of the E-M algorithm in NLP is the task of training a Hidden Markov
 Model (HMM). An HMM is based on a structure called a Markov chain, which is a sequence of probabilistic events,
 or states. A Markov chain obeys the Markov assumption, which states that the probability of a state
 depends only on the previous state. Equivalently, only the current state can be used to predict the next
 state.
                                                                                          
                                                                                          
-<!--l. 112--><p class="noindent" >An HMM is an extension of a Markov chain that assumes that all states in the chain are hidden. However, the states
+<!--l. 123--><p class="noindent" >An HMM is an extension of a Markov chain that assumes that all states in the chain are hidden. However, the states
 emit observations with a certain probability. We cannot see any of the states, but we can see the observations. This
 model lends itself particularly well to the NLP task of part-of-speech (POS) tagging. In this construction, words
 would be observations, and POS tags would be states. Each POS tag would depend only on the previous
 tag.
-<!--l. 114--><p class="noindent" ><hr class="figure"><div class="figure" 
+<!--l. 125--><p class="noindent" ><hr class="figure"><div class="figure" 
 >
                                                                                          
                                                                                          
@@ -124,8 +125,8 @@ tag.
                                                                                          
 <div class="center" 
 >
-<!--l. 116--><p class="noindent" >
-<!--l. 144--><p class="noindent" ><object data="index-1.svg" width="535.31572 " height="153.81401 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>
+<!--l. 127--><p class="noindent" >
+<!--l. 155--><p class="noindent" ><object data="index-1.svg" width="535.31572 " height="153.81401 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>
 <br />
 <br /> <div class="caption" 
 ><span class="id">Figure&#x00A0;1: </span><span  
@@ -134,8 +135,8 @@ class="content">An HMM structure on an example sentence. States (POS tags) are o
 </div>
                                                                                          
                                                                                          
-<!--l. 147--><p class="noindent" ></div><hr class="endfigure">
-<!--l. 149--><p class="noindent" >Formally, an HMM is defined as a set of five components:
+<!--l. 158--><p class="noindent" ></div><hr class="endfigure">
+<!--l. 160--><p class="noindent" >Formally, an HMM is defined as a set of five components:
      <ul class="itemize1">
      <li class="itemize">a set <tspan font-family="cmmi" font-size="10">Q </tspan>of <tspan font-family="cmmi" font-size="10">N </tspan>hidden states
      <center class="math-display" >
@@ -176,21 +177,21 @@ src="index6x.png" alt="B = b11...bij...bNM
 src="index7x.png" alt="&#x03C0; = &#x03C0; ,...,&#x03C0;
      1     N
      " class="math-display" ></center></li></ul>
-<!--l. 163--><p class="noindent" >Given a set of possible states <tspan font-family="cmmi" font-size="10">Q</tspan>, a vocabulary <tspan font-family="cmmi" font-size="10">V </tspan>, and an unlabeled observation <tspan font-family="cmmi" font-size="10">O</tspan>, training an HMM requires
+<!--l. 174--><p class="noindent" >Given a set of possible states <tspan font-family="cmmi" font-size="10">Q</tspan>, a vocabulary <tspan font-family="cmmi" font-size="10">V </tspan>, and an unlabeled observation <tspan font-family="cmmi" font-size="10">O</tspan>, training an HMM requires
 training both the transition probability matrix <tspan font-family="cmmi" font-size="10">A </tspan>and the obeservation matrix <tspan font-family="cmmi" font-size="10">B</tspan>. This is a daunting
 task, but the E-M algorithm allows us to iteratively improve our estimates of these probabilities. The
 <tspan font-family="cmbx" font-size="10">forward-backward</tspan>, or <tspan font-family="cmbx" font-size="10">Baum-Welch </tspan>algorithm is a specific instance of the E-M algorithm designed for this
 purpose.
 <div class="center" 
 >
-<!--l. 165--><p class="noindent" >
+<!--l. 176--><p class="noindent" >
 <h4 class="likesubsectionHead"><a 
  id="x1-5000"></a>The Forward-Backward Algorithm</h4>
 </div>
-<!--l. 169--><p class="noindent" >The E-step of the forward-backward algorithm makes use of forward probabilities and backward probabilities, which
+<!--l. 180--><p class="noindent" >The E-step of the forward-backward algorithm makes use of forward probabilities and backward probabilities, which
 are caculated from <tspan font-family="cmmi" font-size="10">A</tspan>, <tspan font-family="cmmi" font-size="10">B</tspan>, and a sequence of observations <tspan font-family="cmmi" font-size="10">O </tspan>of length <tspan font-family="cmmi" font-size="10">T </tspan>for a state <tspan font-family="cmmi" font-size="10">i </tspan>and a time <tspan font-family="cmmi" font-size="10">t</tspan>. Both are computed
 recursively.
-<!--l. 171--><p class="noindent" >The forward probability <tspan font-family="cmmi" font-size="10">&#x03B1;</tspan><sub><tspan font-family="cmmi" font-size="7">i</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) is the probability of seeing observations <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmr" font-size="7">1</tspan></sub><tspan font-family="cmmi" font-size="10">,o</tspan><sub><tspan font-family="cmr" font-size="7">2</tspan></sub><tspan font-family="cmmi" font-size="10">,</tspan><tspan font-family="cmmi" font-size="10">&#x2026;</tspan><tspan font-family="cmmi" font-size="10">,o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> and being in state <tspan font-family="cmmi" font-size="10">i </tspan>at time
+<!--l. 182--><p class="noindent" >The forward probability <tspan font-family="cmmi" font-size="10">&#x03B1;</tspan><sub><tspan font-family="cmmi" font-size="7">i</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) is the probability of seeing observations <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmr" font-size="7">1</tspan></sub><tspan font-family="cmmi" font-size="10">,o</tspan><sub><tspan font-family="cmr" font-size="7">2</tspan></sub><tspan font-family="cmmi" font-size="10">,</tspan><tspan font-family="cmmi" font-size="10">&#x2026;</tspan><tspan font-family="cmmi" font-size="10">,o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> and being in state <tspan font-family="cmmi" font-size="10">i </tspan>at time
 <tspan font-family="cmmi" font-size="10">t</tspan>:
 <center class="math-display" >
 <img 
@@ -204,10 +205,10 @@ src="index9x.png" alt="            N&#x2211;
 &#x03B1;i(t) = bi(ot)  &#x03B1;j(t- 1)aji
             j=1
 " class="math-display" ></center>
-<!--l. 175--><p class="noindent" >So, the forward probability of <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> for state <tspan font-family="cmmi" font-size="10">i </tspan>is the observation probability of <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> for state <tspan font-family="cmmi" font-size="10">i </tspan>times the sum of the
+<!--l. 186--><p class="noindent" >So, the forward probability of <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> for state <tspan font-family="cmmi" font-size="10">i </tspan>is the observation probability of <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> for state <tspan font-family="cmmi" font-size="10">i </tspan>times the sum of the
 forward probabilities of the previous observation times the transition probability from <tspan font-family="cmmi" font-size="10">j </tspan>to <tspan font-family="cmmi" font-size="10">i </tspan>for all <tspan font-family="cmmi" font-size="10">j</tspan>
 states.
-<!--l. 177--><p class="noindent" >The backward probability <tspan font-family="cmmi" font-size="10">&#x03B2;</tspan><sub><tspan font-family="cmmi" font-size="7">i</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) is the probability of seeing the ending observations <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan><tspan font-family="cmr" font-size="7">+1</tspan></sub><tspan font-family="cmmi" font-size="10">,</tspan><tspan font-family="cmmi" font-size="10">&#x2026;</tspan><tspan font-family="cmmi" font-size="10">,o</tspan><sub><tspan font-family="cmmi" font-size="7">T</tspan></sub> given starting state <tspan font-family="cmmi" font-size="10">i</tspan>
+<!--l. 188--><p class="noindent" >The backward probability <tspan font-family="cmmi" font-size="10">&#x03B2;</tspan><sub><tspan font-family="cmmi" font-size="7">i</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) is the probability of seeing the ending observations <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan><tspan font-family="cmr" font-size="7">+1</tspan></sub><tspan font-family="cmmi" font-size="10">,</tspan><tspan font-family="cmmi" font-size="10">&#x2026;</tspan><tspan font-family="cmmi" font-size="10">,o</tspan><sub><tspan font-family="cmmi" font-size="7">T</tspan></sub> given starting state <tspan font-family="cmmi" font-size="10">i</tspan>
 at time <tspan font-family="cmmi" font-size="10">T</tspan>:
 <center class="math-display" >
 <img 
@@ -219,43 +220,43 @@ src="index11x.png" alt="      &#x2211;N
 &#x03B2;i(t) =   &#x03B2;j(t+ 1)aijbj(ot+1)
       j=1
 " class="math-display" ></center>
-<!--l. 181--><p class="noindent" >So, the backward probability of <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> is the sum of the backward probability of the next state times the transiiton
+<!--l. 192--><p class="noindent" >So, the backward probability of <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> is the sum of the backward probability of the next state times the transiiton
 probability from <tspan font-family="cmmi" font-size="10">j </tspan>to <tspan font-family="cmmi" font-size="10">i </tspan>times the observation probability of the next state for all <tspan font-family="cmmi" font-size="10">j </tspan>states.
-<!--l. 183--><p class="noindent" >The forward and backward probabilities, as well as the current estimates for <tspan font-family="cmmi" font-size="10">A </tspan>and <tspan font-family="cmmi" font-size="10">B</tspan>, allow us to calculate the final
+<!--l. 194--><p class="noindent" >The forward and backward probabilities, as well as the current estimates for <tspan font-family="cmmi" font-size="10">A </tspan>and <tspan font-family="cmmi" font-size="10">B</tspan>, allow us to calculate the final
 two quantities needed for the E-step, <tspan font-family="cmmi" font-size="10">&#x03B3;</tspan><sub><tspan font-family="cmmi" font-size="7">i</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) and <tspan font-family="cmmi" font-size="10">&#x03BE;</tspan><sub><tspan font-family="cmmi" font-size="7">ij</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>).
-<!--l. 185--><p class="noindent" >The quantity <tspan font-family="cmmi" font-size="10">&#x03B3;</tspan><sub><tspan font-family="cmmi" font-size="7">i</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) is the probability of being in state <tspan font-family="cmmi" font-size="10">i </tspan>at time <tspan font-family="cmmi" font-size="10">t </tspan>given <tspan font-family="cmmi" font-size="10">O</tspan>, <tspan font-family="cmmi" font-size="10">A</tspan>, and <tspan font-family="cmmi" font-size="10">B</tspan>:
-<!--l. 187--><p class="noindent" >
+<!--l. 196--><p class="noindent" >The quantity <tspan font-family="cmmi" font-size="10">&#x03B3;</tspan><sub><tspan font-family="cmmi" font-size="7">i</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) is the probability of being in state <tspan font-family="cmmi" font-size="10">i </tspan>at time <tspan font-family="cmmi" font-size="10">t </tspan>given <tspan font-family="cmmi" font-size="10">O</tspan>, <tspan font-family="cmmi" font-size="10">A</tspan>, and <tspan font-family="cmmi" font-size="10">B</tspan>:
+<!--l. 198--><p class="noindent" >
 <center class="math-display" >
 <img 
 src="index12x.png" alt="&#x03B3;i(t) = &#x2211;N-&#x03B1;i(t)&#x03B2;i(t)--
          j=1&#x03B1;j(t)&#x03B2;j(t)
 " class="math-display" ></center>
-<!--l. 189--><p class="noindent" >The quantity <tspan font-family="cmmi" font-size="10">&#x03BE;</tspan><sub><tspan font-family="cmmi" font-size="7">ij</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) is the probability of being in state <tspan font-family="cmmi" font-size="10">i </tspan>at time <tspan font-family="cmmi" font-size="10">t </tspan>and being in state <tspan font-family="cmmi" font-size="10">j </tspan>at time <tspan font-family="cmmi" font-size="10">t </tspan>+ 1 given <tspan font-family="cmmi" font-size="10">O</tspan>, <tspan font-family="cmmi" font-size="10">A</tspan>, and
+<!--l. 200--><p class="noindent" >The quantity <tspan font-family="cmmi" font-size="10">&#x03BE;</tspan><sub><tspan font-family="cmmi" font-size="7">ij</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) is the probability of being in state <tspan font-family="cmmi" font-size="10">i </tspan>at time <tspan font-family="cmmi" font-size="10">t </tspan>and being in state <tspan font-family="cmmi" font-size="10">j </tspan>at time <tspan font-family="cmmi" font-size="10">t </tspan>+ 1 given <tspan font-family="cmmi" font-size="10">O</tspan>, <tspan font-family="cmmi" font-size="10">A</tspan>, and
 <tspan font-family="cmmi" font-size="10">B</tspan>:
-<!--l. 191--><p class="noindent" >
+<!--l. 202--><p class="noindent" >
 <center class="math-display" >
 <img 
 src="index13x.png" alt="       &#x03B1; (t)a &#x03B2; (t+ 1)b (o  )
 &#x03BE;ij(t) = -i-&#x2211;Nij-j------j--t+1--
             j=1&#x03B1;j(t)&#x03B2;j(t)
 " class="math-display" ></center>
-<!--l. 193--><p class="noindent" >The denominators in both <tspan font-family="cmmi" font-size="10">&#x03B3;</tspan><sub><tspan font-family="cmmi" font-size="7">i</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) and <tspan font-family="cmmi" font-size="10">&#x03BE;</tspan><sub><tspan font-family="cmmi" font-size="7">ij</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) represent the probability of seeing the entire observation sequence
+<!--l. 204--><p class="noindent" >The denominators in both <tspan font-family="cmmi" font-size="10">&#x03B3;</tspan><sub><tspan font-family="cmmi" font-size="7">i</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) and <tspan font-family="cmmi" font-size="10">&#x03BE;</tspan><sub><tspan font-family="cmmi" font-size="7">ij</tspan></sub>(<tspan font-family="cmmi" font-size="10">t</tspan>) represent the probability of seeing the entire observation sequence
 <tspan font-family="cmmi" font-size="10">O</tspan>.
-<!--l. 195--><p class="noindent" >We can now use these two quantities to update <tspan font-family="cmmi" font-size="10">A </tspan>and <tspan font-family="cmmi" font-size="10">B </tspan>(and <tspan font-family="cmmi" font-size="10">&#x03C0;</tspan>) in the M-step.
-<!--l. 197--><p class="noindent" >
+<!--l. 206--><p class="noindent" >We can now use these two quantities to update <tspan font-family="cmmi" font-size="10">A </tspan>and <tspan font-family="cmmi" font-size="10">B </tspan>(and <tspan font-family="cmmi" font-size="10">&#x03C0;</tspan>) in the M-step.
+<!--l. 208--><p class="noindent" >
 <center class="math-display" >
 <img 
 src="index14x.png" alt=" *
 &#x03C0;i = &#x03B3;i(1)
 " class="math-display" ></center>
-<!--l. 199--><p class="noindent" >
+<!--l. 210--><p class="noindent" >
 <center class="math-display" >
 <img 
 src="index15x.png" alt="     &#x2211;T -1 &#x03BE; (t)
 a*ij = &#x2211;Tt=-11ij--
        t=1 &#x03B3;i(t)
 " class="math-display" ></center>
-<!--l. 201--><p class="noindent" >
+<!--l. 212--><p class="noindent" >
                                                                                          
                                                                                          
 <center class="math-display" >
@@ -264,7 +265,7 @@ src="index16x.png" alt="*    &#x2211;Ti=1&#x03B3;i(t)&#x22C5;I(ot = vk)
 bij = -----&#x2211;T------------
             t=1&#x03B3;i(t)
 " class="math-display" ></center>
-<!--l. 203--><p class="noindent" >where <tspan font-family="cmmi" font-size="10">I</tspan>(<tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> = <tspan font-family="cmmi" font-size="10">v</tspan><sub><tspan font-family="cmmi" font-size="7">k</tspan></sub>) is an indicator function that is 1 when <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> = <tspan font-family="cmmi" font-size="10">v</tspan><sub><tspan font-family="cmmi" font-size="7">k</tspan></sub>, and 0 otherwise. To summarize, the full algorithm
+<!--l. 214--><p class="noindent" >where <tspan font-family="cmmi" font-size="10">I</tspan>(<tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> = <tspan font-family="cmmi" font-size="10">v</tspan><sub><tspan font-family="cmmi" font-size="7">k</tspan></sub>) is an indicator function that is 1 when <tspan font-family="cmmi" font-size="10">o</tspan><sub><tspan font-family="cmmi" font-size="7">t</tspan></sub> = <tspan font-family="cmmi" font-size="10">v</tspan><sub><tspan font-family="cmmi" font-size="7">k</tspan></sub>, and 0 otherwise. To summarize, the full algorithm
 is:
      <ol  class="enumerate1" >
      <li 
@@ -282,23 +283,23 @@ is:
      norms of the current <tspan font-family="cmmi" font-size="10">A </tspan>and <tspan font-family="cmmi" font-size="10">B</tspan>.</li></ol>
 <div class="center" 
 >
-<!--l. 211--><p class="noindent" >
-<!--l. 212--><p class="noindent" >
+<!--l. 222--><p class="noindent" >
+<!--l. 223--><p class="noindent" >
 <h4 class="likesubsectionHead"><a 
  id="x1-6000"></a>Python Implementation</h4>
 </div>
-<!--l. 215--><p class="noindent" >The forward-backward algorithm can be implemented in Python using <tspan font-family="cmtt" font-size="10">numpy</tspan>. I&#8217;ve also included the <tspan font-family="cmtt" font-size="10">copy </tspan>package
+<!--l. 226--><p class="noindent" >The forward-backward algorithm can be implemented in Python using <tspan font-family="cmtt" font-size="10">numpy</tspan>. I&#8217;ve also included the <tspan font-family="cmtt" font-size="10">copy </tspan>package
 for convenience.
-<!--l. 217-->
+<!--l. 228-->
 <div class="lstlisting" id="listing-1"><span class="label"><a 
  id="x1-6001r1"></a><tspan font-family="cmr" font-size="5">1</tspan></span><tspan font-family="cmtt" font-size="8">import</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">numpy</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><br /><span class="label"><a 
  id="x1-6002r2"></a><tspan font-family="cmr" font-size="5">2</tspan></span><tspan font-family="cmtt" font-size="8">from</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">numpy</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">import</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">linalg</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">as</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">la</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><br /><span class="label"><a 
  id="x1-6003r3"></a><tspan font-family="cmr" font-size="5">3</tspan></span><tspan font-family="cmtt" font-size="8">import</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">numpy</tspan><tspan font-family="cmtt" font-size="8">.</tspan><tspan font-family="cmtt" font-size="8">ma</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">as</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">ma</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><br /><span class="label"><a 
  id="x1-6004r4"></a><tspan font-family="cmr" font-size="5">4</tspan></span><tspan font-family="cmtt" font-size="8">from</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">copy</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">import</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">copy</tspan>
 </div>
-<!--l. 224--><p class="noindent" >The first part of the algorithm is the forward and backward probabilities. It is most efficient to calculate all of the
+<!--l. 235--><p class="noindent" >The first part of the algorithm is the forward and backward probabilities. It is most efficient to calculate all of the
 forward and backward probabilities at once at each step.
-<!--l. 226-->
+<!--l. 237-->
 <div class="lstlisting" id="listing-2"><span class="label"><a 
  id="x1-6005r1"></a><tspan font-family="cmr" font-size="5">1</tspan></span><tspan font-family="cmtt" font-size="8">#</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">Build</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">forward</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">probability</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">matrix</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><br /><span class="label"><a 
  id="x1-6006r2"></a><tspan font-family="cmr" font-size="5">2</tspan></span><tspan font-family="cmtt" font-size="8">def</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">forward_prob</tspan><tspan font-family="cmtt" font-size="8">(</tspan><tspan font-family="cmtt" font-size="8">A</tspan><tspan font-family="cmtt" font-size="8">,</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">B</tspan><tspan font-family="cmtt" font-size="8">,</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">pi</tspan><tspan font-family="cmtt" font-size="8">,</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">obs</tspan><tspan font-family="cmtt" font-size="8">,</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">tokens</tspan><tspan font-family="cmtt" font-size="8">)</tspan><tspan font-family="cmtt" font-size="8">:</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><br /><span class="label"><a 
@@ -347,8 +348,8 @@ forward and backward probabilities at once at each step.
  id="x1-6049r45"></a><tspan font-family="cmr" font-size="5">45</tspan></span><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><br /><span class="label"><a 
  id="x1-6050r46"></a><tspan font-family="cmr" font-size="5">46</tspan></span><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">return</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">probs</tspan>
 </div>
-<!--l. 275--><p class="noindent" >Next, we need functions to calculate <tspan font-family="cmmi" font-size="10">&#x03BE; </tspan>and <tspan font-family="cmmi" font-size="10">&#x03B3; </tspan>for a given time, state(s), and forward/backward probabilities.
-<!--l. 277-->
+<!--l. 286--><p class="noindent" >Next, we need functions to calculate <tspan font-family="cmmi" font-size="10">&#x03BE; </tspan>and <tspan font-family="cmmi" font-size="10">&#x03B3; </tspan>for a given time, state(s), and forward/backward probabilities.
+<!--l. 288-->
 <div class="lstlisting" id="listing-3"><span class="label"><a 
  id="x1-6051r1"></a><tspan font-family="cmr" font-size="5">1</tspan></span><tspan font-family="cmtt" font-size="8">#</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">Probability</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">of</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">being</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">in</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">state</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">i</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">at</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">time</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">t</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><br /><span class="label"><a 
  id="x1-6052r2"></a><tspan font-family="cmr" font-size="5">2</tspan></span><tspan font-family="cmtt" font-size="8">def</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">gamma</tspan><tspan font-family="cmtt" font-size="8">(</tspan><tspan font-family="cmtt" font-size="8">state</tspan><tspan font-family="cmtt" font-size="8">,</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">A</tspan><tspan font-family="cmtt" font-size="8">,</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">B</tspan><tspan font-family="cmtt" font-size="8">,</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">pi</tspan><tspan font-family="cmtt" font-size="8">,</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">time</tspan><tspan font-family="cmtt" font-size="8">,</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">forward_probs</tspan><tspan font-family="cmtt" font-size="8">,</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">backward_probs</tspan><tspan font-family="cmtt" font-size="8">)</tspan><tspan font-family="cmtt" font-size="8">:</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><br /><span class="label"><a 
@@ -379,32 +380,32 @@ forward and backward probabilities at once at each step.
                                                                                          
                                                                                          
 </div>
-<!--l. 306--><p class="noindent" >Now we have all of the ingredients we need to implement the full forward-backward algorithm. Here, I&#8217;ve extended
+<!--l. 317--><p class="noindent" >Now we have all of the ingredients we need to implement the full forward-backward algorithm. Here, I&#8217;ve extended
 the algorithm to allow for multiple training sequences <tspan font-family="cmmi" font-size="10">O</tspan><sub><tspan font-family="cmr" font-size="7">1</tspan></sub><tspan font-family="cmmi" font-size="10">,</tspan><tspan font-family="cmmi" font-size="10">&#x2026;</tspan><tspan font-family="cmmi" font-size="10">O</tspan><sub><tspan font-family="cmmi" font-size="7">R</tspan></sub>. In the E-step, we need to calculate <tspan font-family="cmmi" font-size="10">&#x03B3; </tspan>and <tspan font-family="cmmi" font-size="10">&#x03BE; </tspan>for all
 observation sequences, and in the M-step, we simply need to average over all of the sequences when updating <tspan font-family="cmmi" font-size="10">A,B,</tspan>
 and <tspan font-family="cmmi" font-size="10">&#x03C0;</tspan>.
-<!--l. 308--><p class="noindent" >
+<!--l. 319--><p class="noindent" >
 <center class="math-display" >
 <img 
 src="index17x.png" alt="     &#x2211;R
 &#x03C0;* = --r=1&#x03B3;ir(1)
  i       R
 " class="math-display" ></center>
-<!--l. 310--><p class="noindent" >
+<!--l. 321--><p class="noindent" >
 <center class="math-display" >
 <img 
 src="index18x.png" alt="     &#x2211;R   &#x2211;T - 1&#x03BE;ijr(t)
 a*ij = &#x2211;Rr=1-&#x2211;tT=1-1----
        r=1   t=1 &#x03B3;ir(t)
 " class="math-display" ></center>
-<!--l. 312--><p class="noindent" >
+<!--l. 323--><p class="noindent" >
 <center class="math-display" >
 <img 
 src="index19x.png" alt="     &#x2211;R   &#x2211;T   &#x03B3;  (t)&#x22C5;I(o  = v )
 b*ij =--r=1-&#x2211;tR=1-i&#x2211;rT------ir----k-
              r=1   t=1 &#x03B3;ir(t)
 " class="math-display" ></center>
-<!--l. 314-->
+<!--l. 325-->
 <div class="lstlisting" id="listing-4"><span class="label"><a 
  id="x1-6077r1"></a><tspan font-family="cmr" font-size="5">1</tspan></span><tspan font-family="cmtt" font-size="8">#</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">Full</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">Baum</tspan><tspan font-family="cmtt" font-size="8">-</tspan><tspan font-family="cmtt" font-size="8">Welch</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">(</tspan><tspan font-family="cmtt" font-size="8">forward</tspan><tspan font-family="cmtt" font-size="8">-</tspan><tspan font-family="cmtt" font-size="8">backward</tspan><tspan font-family="cmtt" font-size="8">)</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">algorithm</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><br /><span class="label"><a 
  id="x1-6078r2"></a><tspan font-family="cmr" font-size="5">2</tspan></span><tspan font-family="cmtt" font-size="8">def</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">forward_backward</tspan><tspan font-family="cmtt" font-size="8">(</tspan><tspan font-family="cmtt" font-size="8">A</tspan><tspan font-family="cmtt" font-size="8">,</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">B</tspan><tspan font-family="cmtt" font-size="8">,</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">pi</tspan><tspan font-family="cmtt" font-size="8">,</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">obs_seqs</tspan><tspan font-family="cmtt" font-size="8">,</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">tokens</tspan><tspan font-family="cmtt" font-size="8">)</tspan><tspan font-family="cmtt" font-size="8">:</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><br /><span class="label"><a 
@@ -478,6 +479,36 @@ b*ij =--r=1-&#x2211;tR=1-i&#x2211;rT------ir----k-
  id="x1-6146r70"></a><tspan font-family="cmr" font-size="5">70</tspan></span><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><br /><span class="label"><a 
  id="x1-6147r71"></a><tspan font-family="cmr" font-size="5">71</tspan></span><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">return</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">(</tspan><tspan font-family="cmtt" font-size="8">pi</tspan><tspan font-family="cmtt" font-size="8">,</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">A</tspan><tspan font-family="cmtt" font-size="8">,</tspan><tspan font-family="cmtt" font-size="8">&#x00A0;</tspan><tspan font-family="cmtt" font-size="8">B</tspan><tspan font-family="cmtt" font-size="8">)</tspan>
 </div>
+<!--l. 399--><p class="noindent" >The full code can be found <a 
+href="https://github.com/MirandaRintoul/539-technical-tutorial/blob/main/em_nlp.py" >here</a>. In this example, I train an HMM on the Penn Treebank data from the <tspan font-family="cmtt" font-size="10">nltk</tspan>
+package, which can be found found <a 
+href="https://www.nltk.org/nltk_data/" >here</a> (item 44).
+<!--l. 401--><p class="noindent" >Once an HMM is trained, it can be used to label, or decode, new testing sequences using methods like greedy
+decoding or the Viterbi algorithm.
+                                                                                         
+                                                                                         
+<div class="center" 
+>
+<!--l. 403--><p class="noindent" >
+<!--l. 404--><p class="noindent" >
+<h4 class="likesubsectionHead"><a 
+ id="x1-7000"></a>Sources</h4>
+</div>
+     <ul class="itemize1">
+     <li class="itemize"><a 
+href="https://www.ece.iastate.edu/~namrata/EE527_Spring08/Dempster77.pdf" class="url" ><tspan font-family="cmtt" font-size="10">https://www.ece.iastate.edu/</tspan><tspan font-family="cmtt" font-size="10">~</tspan><tspan font-family="cmtt" font-size="10">namrata/EE527_Spring08/Dempster77.pdf</tspan></a>
+     </li>
+     <li class="itemize"><a 
+href="https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm" class="url" ><tspan font-family="cmtt" font-size="10">https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm</tspan></a>
+     </li>
+     <li class="itemize"><a 
+href="https://web.stanford.edu/~jurafsky/slp3/A.pdf" class="url" ><tspan font-family="cmtt" font-size="10">https://web.stanford.edu/</tspan><tspan font-family="cmtt" font-size="10">~</tspan><tspan font-family="cmtt" font-size="10">jurafsky/slp3/A.pdf</tspan></a>
+     </li>
+     <li class="itemize"><a 
+href="https://en.wikipedia.org/wiki/Hidden_Markov_model" class="url" ><tspan font-family="cmtt" font-size="10">https://en.wikipedia.org/wiki/Hidden_Markov_model</tspan></a>
+     </li>
+     <li class="itemize"><a 
+href="https://en.wikipedia.org/wiki/Baum%E2%80%93Welch_algorithm" class="url" ><tspan font-family="cmtt" font-size="10">https://en.wikipedia.org/wiki/Baum%E2%80%93Welch_algorithm</tspan></a></li></ul>
  
 </body></html> 
 
