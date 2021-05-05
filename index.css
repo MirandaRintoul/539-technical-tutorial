@@ -154,7 +154,7 @@ div.array {text-align:center;}
 div.lstlisting{font-family: monospace; white-space: nowrap; margin-top:0.5em; margin-bottom:0.5em; }
 div.lstinputlisting{ font-family: monospace; white-space: nowrap; }
 .lstinputlisting .label{margin-right:0.5em;}
-body{margin: 75px 350px 100px; font-size: 18px; background-color:rgba(0, 0, 0, 0);}
+body{margin: 75px 340px 100px; font-size: 18px; background-color:rgba(0, 0, 0, 0);}
  .foreignobject {line-height:100%; font-size:120%; font-family:STIXgeneral,Times,Symbol,cmr10,CMSY10,CMEX10;padding:0; margin:0; text-align:center; } 
 math {vertical-align:baseline; line-height:100%; font-size:100%; font-family:STIXGeneral,Times,Symbol, cmr10,cmsy10,cmex10,cmmi10; font-style: normal; margin:0; padding:0; }
 /* end css.sty */
