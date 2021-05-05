@@ -5,4 +5,5 @@
 \doTocEntry\toclikesubsection{}{\csname a:TocLink\endcsname{1}{x1-4000}{QQ2-1-4}{E-M and Hidden Markov Models}}{2}\relax 
 \doTocEntry\toclof{1}{\csname a:TocLink\endcsname{1}{x1-40011}{}{\ignorespaces An HMM structure on an example sentence. States (POS tags) are on top, and observations (words) are below.}}{figure}\relax 
 \doTocEntry\toclikesubsection{}{\csname a:TocLink\endcsname{1}{x1-5000}{QQ2-1-6}{The Forward-Backward Algorithm}}{7}\relax 
+\doTocEntry\toclikesubsection{}{\csname a:TocLink\endcsname{1}{x1-6000}{QQ2-1-7}{Python Implementation}}{10}\relax 
 \par 

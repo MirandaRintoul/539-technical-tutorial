@@ -1,4 +1,5 @@
 \documentclass[14pt]{article}
+\usepackage[utf8]{inputenc}
 
 \usepackage{amsmath, amsthm, amssymb}
 \DeclareMathOperator*{\argmax}{arg\,max}
@@ -6,7 +7,6 @@
 \usepackage{graphicx, verbatim}
 \usepackage{multirow}
 \usepackage[margin = 1in]{geometry}
-\usepackage[dvipsnames]{xcolor}
 \setlength{\parindent}{0pt}
 \DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
 
@@ -19,13 +19,60 @@
 \newenvironment{blockcode}
 {\leavevmode\color{Violet}\verbatim}{\endverbatim}
 
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2}
+
+
 
 \begin{document}
+
 
 \Css{body{margin: 75px 300px 100px;
 		  %font-family: Arial, Helvetica, sans-serif;
 		  font-size: 18px;
-		  background-color: WhiteSmoke;}} 
+		  background-color:rgba(0, 0, 0, 0);}} 
+
 \begin{center}
 \section*{Expectation-Maximization Algorithm}
 
@@ -129,7 +176,7 @@ So, the forward probability of $o_t$ for state $i$ is the observation probabilit
 
 The backward probability $\beta_i(t)$ is the probability of seeing the ending observations $o_{t+1},\ldots,o_T$ given starting state $i$ at time $T$:
 $$\beta_i(T) = 1$$
-$$\beta_i(t) = \sum_{j=1}^N \beta_j(t+1)a_{ij}b_j(y_{t+1})$$
+$$\beta_i(t) = \sum_{j=1}^N \beta_j(t+1)a_{ij}b_j(o_{t+1})$$
 
 So, the backward probability of $o_t$ is the sum of the backward probability of the next state times the transiiton probability from $j$ to $i$ times the observation probability of the next state for all $j$ states.
 
@@ -160,5 +207,184 @@ where $I(o_t = v_k)$ is an indicator function that is 1 when $o_t = v_k$, and 0 
 \item \textbf{M-Step:} Update $\pi, A,$ and $B$ using $\gamma$ and $\xi$.
 \item Repeat steps 2 and 3 until convergence, e.g. the norms of the previous $A$ and $B$ are within $\epsilon$ of the norms of the current $A$ and $B$.
 \end{enumerate}
+
+\begin{center}
+\subsection*{Python Implementation}
+\end{center}
+
+The forward-backward algorithm can be implemented in Python using \texttt{numpy}.  I've also included the \texttt{copy} package for convenience.
+
+\begin{lstlisting}[language=Python]
+import numpy
+from numpy import linalg as la
+import numpy.ma as ma
+from copy import copy
+\end{lstlisting}
+
+The first part of the algorithm is the forward and backward probabilities.  It is most efficient to calculate all of the forward and backward probabilities at once at each step.
+
+\begin{lstlisting}[language=Python]
+# Build forward probability matrix
+def forward_prob(A, B, pi, obs, tokens):
+    # Create matrix to hold probabilities for each state and time
+    N = len(A)
+    T = len(obs)
+    probs = numpy.zeros((N, T))
+    # Initialize forward probability values for time 0
+    for i in range(N):
+        probs[i,0] = pi[i]
+    
+    # Iteratively calculate all other forward probabilities
+    for t in range(T)[1:]:
+        # Get word at time t
+        word = obs[t] 
+        word_loc = tokens.index(word)
+        for i in range(N):
+            obs_prob = B[i][word_loc]
+            transition_probs = [row[i] for row in A]
+            prev_forward_probs = probs[:,t-1]
+            
+            probs[i,t] = obs_prob * sum(prev_forward_probs * transition_probs)
+            
+    return probs
+
+
+# Build backward probability matrix
+def backward_prob(A, B, pi, obs, tokens):
+    # Create matrix to hold probabilities for each state and time
+    N = len(A)
+    T = len(obs)
+    probs = numpy.zeros((N, T))
+    # Initialize forward probability values for time 0
+    probs[:,T-1] = 1
+    
+    # Iteratively calculate all other backward probabilities
+    for t in reversed(range(T-1)):
+        next_word = obs[t+1]
+        next_word_loc = tokens.index(next_word)
+        for i in range(N):
+            transition_probs = [row[i] for row in A]
+            observation_probs = [row[next_word_loc] for row in B]
+            next_backward_probs = probs[:,t+1]
+            
+            probs[i, t] = sum(next_backward_probs * transition_probs * observation_probs)
+    
+    return probs
+\end{lstlisting}
+
+Next, we need functions to calculate $\xi$ and $\gamma$ for a given time, state(s), and forward/backward probabilities.
+
+\begin{lstlisting}[language=Python]
+# Probability of being in state i at time t
+def gamma(state, A, B, pi, time, forward_probs, backward_probs):
+    # Find probability of full observation sequence
+    full_obs = sum(forward_probs[:,time] * backward_probs[:,time])
+    
+    # Forward + backward probability of given state and time
+    forward = forward_probs[state,time]
+    backward = backward_probs[state,time]
+    
+    return (forward * backward) / full_obs
+
+# Probability of being in states i, j at times t, t+1
+def xi(states, A, B, pi, time, forward_probs, backward_probs, obs, tokens):
+    # Find probability of full observation sequence
+    full_obs = sum(forward_probs[:,time] * backward_probs[:,time])
+    
+    # Probabilities of given states and times
+    forward = forward_probs[states[0],time]
+    transition = A[states[0]][states[1]]
+    backward = backward_probs[states[1],time]
+    
+    next_word = obs[time+1]
+    next_word_loc = tokens.index(next_word)
+    observation = B[states[1]][next_word_loc]
+    
+    return (forward * transition * backward * observation) / full_obs
+\end{lstlisting}
+
+Now we have all of the ingredients we need to implement the full forward-backward algorithm.  Here, I've extended the algorithm to allow for multiple training sequences $O_1,\ldots O_R$. In the E-step, we need to calculate $\gamma$ and $\xi$ for all observation sequences, and in the M-step, we simply need to average over all of the sequences when updating $A, B,$ and $\pi$.
+
+$$\pi_i^* = \frac{\sum_{r=1}^R \gamma_{ir}(1)}{R}$$ 
+
+$$a_{ij}^* = \frac{\sum_{r=1}^R \sum_{t=1}^{T-1}\xi_{ijr}(t)}{\sum_{r=1}^R \sum_{t=1}^{T-1} \gamma_{ir}(t)}$$
+
+$$b_{ij}^* = \frac{\sum_{r=1}^R \sum_{t=1}^T \gamma_{ir}(t)\cdot I(o_{ir} = v_k)}{\sum_{r=1}^R \sum_{t=1}^T \gamma_{ir}(t)}$$
+
+\begin{lstlisting}[language=Python]
+# Full Baum-Welch (forward-backward) algorithm
+def forward_backward(A, B, pi, obs_seqs, tokens):
+    # Convergence criteria and max iterations
+    eps = .0001
+    A_diff = 1
+    B_diff = 1
+    maxit = 100
+    n_iter = 0
+    
+    V = len(B[0])                           # number of words in vocabulary
+    R = len(obs_seqs)                       # number of training sequences
+    N = len(A)                              # number of states
+    L = max([len(r) for r in obs_seqs])     # length of longest sequence
+    
+    # Initialize arrays to hold all values of gamma and xi
+    gammas = numpy.zeros((R, N, L))
+    xis = numpy.zeros((R, N, N, L-1))
+    
+    # Loop until both A and B have converged, or until max iter is hit
+    while ( (A_diff > eps) or (B_diff > eps) ) and (n_iter < maxit):
+        # E-step
+        for r in range(R):
+            obs = obs_seqs[r]  # current observation
+            T = len(obs)   # length of current observation
+            
+            # Get forward/backward probability matrices
+            forward = forward_prob(A, B, pi, obs, tokens)
+            backward = backward_prob(A, B, pi, obs, tokens)
+            
+            # Find gamma for each state, xi for each pair of states
+            for t in range(T):
+                for i in range(N):
+                    gammas[r][i][t] = gamma(i, A, B, pi, t, forward, backward)
+            for t in range(T-1):
+                for i in range(N):
+                    for j in range(N):
+                        xis[r][i][j][t] = xi([i, j], A, B, pi, t, forward, backward, obs, tokens)
+        
+        # M-step
+        # Store old matrices to compare
+        old_A = copy(A)
+        old_B = copy(B)
+        
+        for i in range(N):
+            # Update pi
+            pi[i] = sum(gammas[:,i,1]) / R
+            
+            for j in range(N):
+                # Update A
+                A[i, j] = sum(sum(xis[:,i,j,:])) / sum(sum(gammas[:,i,:-1]))
+                
+            for v in range(V): 
+                current_word = tokens[v]
+                obs_total = numpy.zeros((R))
+                for r in range(R):
+                    # Need to check if obs contains current vocab word
+                    mask = [x != current_word for x in obs_seqs[r]]
+                    mask += [True] * (L - len(obs_seqs[r]))
+                    matches = ma.masked_array(gammas[r,i,:], mask=mask)
+
+                    obs_total[r] = sum(matches)
+                    
+                # Update B
+                B[i, v] = sum(obs_total) / sum(sum(gammas[:,i,:]))
+        
+        # Find differences in norm of A, B
+        A_diff = abs(la.norm(A) - la.norm(old_A))
+        B_diff = abs(la.norm(B) - la.norm(old_B))
+        n_iter += 1
+            
+    return (pi, A, B)
+\end{lstlisting}
+
+
 
 \end{document}
