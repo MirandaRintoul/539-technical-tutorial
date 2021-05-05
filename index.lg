@@ -157,7 +157,7 @@ Css: .lstlisting .label{margin-right:0.5em; }
 Css: div.lstlisting{font-family: monospace; white-space: nowrap; margin-top:0.5em; margin-bottom:0.5em; }
 Css: div.lstinputlisting{ font-family: monospace; white-space: nowrap; }
 Css: .lstinputlisting .label{margin-right:0.5em;}
-Css: body{margin: 75px 300px 100px; font-size: 18px; background-color:rgba(0, 0, 0, 0);}
+Css: body{margin: 75px 350px 100px; font-size: 18px; background-color:rgba(0, 0, 0, 0);}
 --- needs --- index.idv[2] ==> index0x.png ---
 --- needs --- index.idv[4] ==> index1x.png ---
 --- needs --- index.idv[5] ==> index2x.png ---

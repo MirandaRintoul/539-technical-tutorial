@@ -40,11 +40,11 @@ class="cmmi-10">&#x2113;</span>(<span
 class="cmmi-10">&#x03B8;</span><span 
 class="cmsy-10">|</span><span 
 class="cmmi-10">y</span>).
-<!--l. 99--><p class="noindent" >However, there are many situations where the not all information is available, and our data has a
-hidden (or latent) component. In this situation, finding the MLE of the parameters using only the
-observed data can be difficult or even intractable. The Expectation-Maximizztion (E-M) algorithm,
-introduced in 1977, is an iterative method for obtaining the MLE when there is latent or missing
-data.
+<!--l. 99--><p class="noindent" >However, there are many situations where not all information is available, so the data has a hidden or unobserved
+component. This data, which is unknown, but is still a part of the likelihood function, is called latent data. In this
+situation, finding the MLE of the parameters using only the observed data can be difficult or even intractable. The
+Expectation-Maximization (E-M) algorithm, introduced in 1977, is an iterative method for obtaining the MLE when
+there is latent or missing data.
 <div class="center" 
 >
 <!--l. 101--><p class="noindent" >
@@ -52,8 +52,8 @@ data.
 <h4 class="likesubsectionHead"><a 
  id="x1-3000"></a>Algorithm</h4>
 </div>
-<!--l. 105--><p class="noindent" >The E-M works by alternating between estimating the latent data and the parameters at each step. The data is
-used to estimate the parameters, then the parameters are used to estimate the data, and so on until
+<!--l. 105--><p class="noindent" >The E-M algorithm works by alternating between estimating the latent data and the parameters at each step. The
+data is used to estimate the parameters, then the parameters are used to estimate the data, and so on until
 convergence.
 <!--l. 107--><p class="noindent" >Let <span 
 class="cmmi-10">X </span>be our observed data, <span 

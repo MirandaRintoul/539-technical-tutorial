@@ -77,7 +77,7 @@
 \begin{document}
 
 
-\Css{body{margin: 75px 300px 100px;
+\Css{body{margin: 75px 350px 100px;
 		  %font-family: Arial, Helvetica, sans-serif;
 		  font-size: 18px;
 		  background-color:rgba(0, 0, 0, 0);}} 
@@ -96,13 +96,13 @@ $$L(\theta|y) = f(y|\theta)$$
 
 The maximum likelihood estimator of $\theta$ is the argmax of the likelihood function.  Intuitively, it can be thought of as the parameter that is most likely to have generated the data.  In practice, it is conveneient to instead maximize the log of the likelihood function, $\ell(\theta|y)$.
 
-However, there are many situations where the not all information is available, and our data has a hidden (or latent) component.  In this situation, finding the MLE of the parameters using only the observed data can be difficult or even intractable.  The Expectation-Maximizztion (E-M) algorithm, introduced in 1977, is an iterative method for obtaining the MLE when there is latent or missing data.
+However, there are many situations where not all information is available, so the data has a hidden or unobserved component.  This data, which is unknown, but is still a part of the likelihood function, is called latent data.  In this situation, finding the MLE of the parameters using only the observed data can be difficult or even intractable.  The Expectation-Maximization (E-M) algorithm, introduced in 1977, is an iterative method for obtaining the MLE when there is latent or missing data.
 
 \begin{center}
 \subsection*{Algorithm}
 \end{center}
 
-The E-M works by alternating between estimating the latent data and the parameters at each step.  The data is used to estimate the parameters, then the parameters are used to estimate the data, and so on until convergence.
+The E-M algorithm works by alternating between estimating the latent data and the parameters at each step.  The data is used to estimate the parameters, then the parameters are used to estimate the data, and so on until convergence.
 
 Let $X$ be our observed data, $Z$ be our latent data, and $\theta$ our parameter of interest.  The E-M algorithm is as follows:
 \begin{enumerate}
